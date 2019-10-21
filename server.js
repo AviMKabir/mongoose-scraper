@@ -27,25 +27,19 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 
-var MONGDB_URI = (
-  process.env.MONGDB_URI || "mongodb://user1:password1@ds137508.mlab.com:37508/heroku_7nfqg71v", 
-  {
+var MONGDB_URI = process.env.MONGDB_URI || "mongodb://user1:password1@ds137508.mlab.com:37508/heroku_7nfqg71v";
 
-useMongoClient: true
-
-  });
-
-mongoose.connect(MONGDB_URI , { useNewUrlParser: true });
+mongoose.connect(MONGDB_URI, { useNewUrlParser: true });
 
 
 // mongoose.connect("mongodb://localhost/mongoose-hw-populator-3", { useNewUrlParser: true });
 
 // Routes
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-app.get("/savedarticles", function(req, res) {
+app.get("/savedarticles", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/savedArticles.html"));
 });
 
@@ -68,7 +62,7 @@ app.get("/scrape", function (req, res) {
       result.link = $(this)
         .children("a")
         .attr("href");
-     
+
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -101,19 +95,19 @@ app.get("/articles", function (req, res) {
 
 });
 
-  // Route for getting all Articles from the db
-  app.get("/saved", function(req, res) {
-    // Grab every document in the Articles collection
-    db.Article.find({})
-      .then(function(dbSaved) {
-        // If we were able to successfully find Articles, send them back to the client
-        res.json(dbSaved);
-      })
-      .catch(function(err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-      });
-    });  
+// Route for getting all Articles from the db
+app.get("/saved", function (req, res) {
+  // Grab every document in the Articles collection
+  db.Article.find({})
+    .then(function (dbSaved) {
+      // If we were able to successfully find Articles, send them back to the client
+      res.json(dbSaved);
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
 
 app.listen(PORT, function () {
   console.log("App running on http://localhost:" + PORT);
