@@ -11,7 +11,7 @@ var path = require("path");
 
 // listening on this port
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //turn express on
 var app = express();
