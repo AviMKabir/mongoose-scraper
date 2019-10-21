@@ -26,7 +26,13 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/mongoose-hw-populator-3", { useNewUrlParser: true });
+
+var MONGDB_URI = process.env.MONGDB_URI || "mongodb://localhost/mongoose-hw-populator-3"
+
+mongoose.connect(MONGDB_URI);
+
+
+// mongoose.connect("mongodb://localhost/mongoose-hw-populator-3", { useNewUrlParser: true });
 
 // Routes
 app.get("/", function(req, res) {
