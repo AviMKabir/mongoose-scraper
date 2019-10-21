@@ -2,8 +2,7 @@ $.getJSON("/articles", function(article) {
     for (var i = 0; i < article.length; i++) {
        var url = article[i].link;
        var title = article[i].title;
-       var summary = "Article Summary";
-       $("#articles").append("<div class='card text-white bg-dark mb-2' style='max-width: 20rem'>" + "<p data-id='" + article[i]._id + "'>" + "<div class='card-header ' a href=" + article[i].link + ">"  + title + "</a>" + "<hr>" + "<hr>" + "<a class='btn btn-primary save'>Save Article</a>" + "<br>" + "<" + "a href=" + article[i].link + " class= 'btn btn-primary ' " + ">" + "Go somewhere" + "</a>");
+       $("#articles").prepend("<div class='card text-center col-12' " + "<p data-id='" + url + "'>" + "<div class='card-body ' a href=" + url + ">"  + title + "</a>" + "<hr>" + "<" + "a href=" + url + " target ='_blank' " + " class= 'btn btn-outline-success ' " + ">" + "Open article in new tab" + "</a>" + "<br> <br>"+  "<a class='btn btn-outline-success save'>Save Article</a>" );
        $(".btn.btn-primary.save").on("click",$(this), function() {
         
           var savedArticle = $(this)
@@ -20,3 +19,8 @@ $.getJSON("/articles", function(article) {
       });
   }
   });
+
+  $("#scrape").on("click", function() {
+    console.log("scraped");
+  window.location.href = "/"
+}); 

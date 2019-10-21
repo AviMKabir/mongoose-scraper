@@ -50,7 +50,7 @@
     
     
                 <ul class="navbar-nav">
-                    <li class="nav-item ">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/savedarticles">Saved <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -60,13 +60,10 @@
             </nav>
 
             <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                      <h1 class="display-4 text-center">The (un)Official Onion Scraper</h1>
-                      <div class ="text-center">
-                            <button onclick="window.location.href = '/scrape/';" type="button" class="btn btn-success text-center" id="scrape"
-                                href="/scrape">Scrape Articles</button>
-                    
-                            </div> 
+                    <div class="container text-center">
+                      <button type="button" class="btn btn-lg btn-success text-center" disabled>Saved Articles</button>
+
+                     
                     </div>
                   </div>
 
@@ -87,7 +84,7 @@
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- External Javascript -->
-    <script src="app.js"></script>
+    <script src="savedArticles.js"></script>
 
 </body>
 
