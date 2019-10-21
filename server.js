@@ -27,7 +27,13 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 
-var MONGDB_URI = process.env.MONGDB_URI || "mongodb://localhost/mongoose-hw-populator-3";
+var MONGDB_URI = (
+  process.env.MONGDB_URI || "mongodb://user1:password1@ds137508.mlab.com:37508/heroku_7nfqg71v", 
+  {
+
+useMongoClient: true
+
+  });
 
 mongoose.connect(MONGDB_URI , { useNewUrlParser: true });
 
@@ -77,7 +83,7 @@ app.get("/scrape", function (req, res) {
     });
 
     // Send a message to the client
-    res.send("Scrape Complete");
+    res.redirect('/')
   });
 });
 

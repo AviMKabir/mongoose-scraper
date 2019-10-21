@@ -21,6 +21,5 @@ $.getJSON("/articles", function(article) {
   });
 
   $("#scrape").on("click", function() {
-    console.log("scraped");
-  window.location.href = "/"
+    console.log("scraping");
 }); 
